@@ -9,22 +9,20 @@
         <models>
             <magelix_mustlogin>
                 <class>Magelix_Mustlogin_Model</class>
-                <resourceModel>magelix_mustlogin_resource</resourceModel>
             </magelix_mustlogin>
-            <magelix_mustlogin_resource>
-                <class>Magelix_Mustlogin_Model_Resource</class>
-            </magelix_mustlogin_resource>
         </models>
-        <blocks>
-            <magelix_mustlogin>
-                <class>Magelix_Mustlogin_Block</class>
-            </magelix_mustlogin>
-            <page>
-                <rewrite>
-                    <html_head>Magelix_Mustlogin_Block_Html_Head</html_head>
-                </rewrite>
-            </page>
-        </blocks>
+        <!--
+               <blocks>
+                   <magelix_mustlogin>
+                       <class>Magelix_Mustlogin_Block</class>
+                   </magelix_mustlogin>
+                   <page>
+                       <rewrite>
+                           <html_head>Magelix_Mustlogin_Block_Html_Head</html_head>
+                       </rewrite>
+                   </page>
+               </blocks>
+       -->
         <helpers>
             <magelix_mustlogin>
                 <class>Magelix_Mustlogin_Helper</class>
@@ -40,4 +38,16 @@
             </must_login>
         </customer>
     </default>
+    <frontend>
+        <events>
+            <controller_action_layout_load_before>
+                <observers>
+                    <magelix_mustlogin>
+                        <class>Magelix_Mustlogin_Model_Observer</class>
+                        <method>setredirect</method>
+                    </magelix_mustlogin>
+                </observers>
+            </controller_action_layout_load_before>
+        </events>
+    </frontend>
 </config>
